@@ -50,6 +50,7 @@ def display_categories():
                 print("Invalid choice, please select again.")
         except ValueError:
             print("Please enter a valid number.")
+            return None
 
 def add_to_cart(cart, product, quantity):
     cart.append((product[0], product[1], quantity))
@@ -95,6 +96,9 @@ def main():
     cart = []
     while True:
         category_index = display_categories()
+        if category_index is None:
+            continue  # Handle invalid input
+
         category = list(products.keys())[category_index]
         products_list = products[category]
         
@@ -147,4 +151,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
